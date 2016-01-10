@@ -2,12 +2,12 @@
  * @flow
  */
 
-/*:: type FFree<a> = 
+/*:: type FFree<a,gx> = 
        { kind: "fpure", value: a, map: Function, chain: Function } |
-       { kind: "fimpure", gx: Object, f: Function, map: Function, chain: Function }
+       { kind: "fimpure", gx: gx, f: Function, map: Function, chain: Function }
  */
 
-function fpure/*::<a>*/(a /*: a*/) /*: FFree<a> */ { 
+function fpure/*::<a,gx>*/(a /*: a*/) /*: FFree<a,gx> */ { 
   return { 
     value: a,
     // Functor
@@ -19,8 +19,8 @@ function fpure/*::<a>*/(a /*: a*/) /*: FFree<a> */ {
   } 
 }
 
-function fimpure(gx) { 
-  return function (f /*: Function */) { 
+function fimpure/*::<gx,a>*/(gx /*: gx */) /*: (f: Function) => FFree<a, gx> */ { 
+  return function (f) { 
     return { 
       gx: gx, 
       f: f,
@@ -31,7 +31,6 @@ function fimpure(gx) {
         });
       },
       // Monad
-      // FImpure gx f >>= k = FImpure gx (f >>> k)
       chain: function (k) {
         return fimpure(gx)(kompose(f)(k));
       },
@@ -51,7 +50,7 @@ function kompose(f) {
   };
 }
 
-function etaF/*::<a>*/(fa) /*: FFree<a> */ {
+function etaF/*::<a,gx>*/(fa /*: gx */) /*: FFree<a,gx> */ {
   return fimpure(fa)(fpure);
 }
 
