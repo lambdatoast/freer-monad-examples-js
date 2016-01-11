@@ -1,0 +1,22 @@
+{
+  "name": "freer-monad-examples-js",
+  "version": "1.0.0",
+  "description": "Example usage of freer free monads in JS.",
+  "main": "eff-state.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lambdatoast/freer-monad-examples-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lambdatoast/freer-monad-examples-js/issues"
+  },
+  "homepage": "https://github.com/lambdatoast/freer-monad-examples-js",
+  "dependencies": {
+    "ramda": "^0.19.1"
+  }
+}

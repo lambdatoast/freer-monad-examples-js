@@ -2,6 +2,8 @@
  * @flow
  */
 
+// http://okmij.org/ftp/Computation/free-monad.html
+
 /*:: type FFree<a,gx> = 
        { kind: "fpure", value: a, map: Function, chain: Function } |
        { kind: "fimpure", gx: gx, f: Function, map: Function, chain: Function }
