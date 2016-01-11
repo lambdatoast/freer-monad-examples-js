@@ -5,7 +5,7 @@ function runEffMapDrawing/*::<a>*/(emd /*: EffMapDrawing<a> */) {
       return emd.value;
     } else {
       var r = unEffMapDrawing(emd.gx)(map);
-      return runEffMapDrawing(emd.f(r))(map);
+      return runEffMapDrawing(emd.f(r))(r);
     }
   }
 }
@@ -13,10 +13,9 @@ function runEffMapDrawing/*::<a>*/(emd /*: EffMapDrawing<a> */) {
 function unEffMapDrawing/*::<a>*/(md /*: MapDrawing<a>*/) {
   return function (map) {
     if (md.kind === 'AddMarker') {
-      map.push('added marker ' + map.length + ' to ' + md.a);
-      return map;
+      return map.concat([{ id: map.length, name: md.a}]);
     } else if (md.kind === 'RemoveMarker') {
-      return map.slice(0, (map.length - 1))
+      return map.filter(function (m) { return m.name !== md.a; });
     }
   }
 }
