@@ -1,5 +1,5 @@
-var addMarker = require('../eff-map').addMarker; 
-var removeMarker = require('../eff-map').removeMarker; 
+var addMarker = require('../eff-geomap').addMarker; 
+var removeMarker = require('../eff-geomap').removeMarker; 
 
 module.exports = addMarker('antarctica').chain(function () {
   return addMarker('serbia').chain(function () {

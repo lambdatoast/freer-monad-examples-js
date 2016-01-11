@@ -1,16 +1,16 @@
 
-function runEffMapDrawing/*::<a>*/(emd /*: EffMapDrawing<a> */) {
+function runEffGeoMap/*::<a>*/(emd /*: EffGeoMap<a> */) {
   return function (map) {
     if (emd.kind === "fpure") {
       return emd.value;
     } else {
-      var r = unEffMapDrawing(emd.gx)(map);
-      return runEffMapDrawing(emd.f(r))(r);
+      var r = unEffGeoMap(emd.gx)(map);
+      return runEffGeoMap(emd.f(r))(r);
     }
   }
 }
 
-function unEffMapDrawing/*::<a>*/(md /*: MapDrawing<a>*/) {
+function unEffGeoMap/*::<a>*/(md /*: GeoMap<a>*/) {
   return function (map) {
     if (md.kind === 'AddMarker') {
       return map.concat([{ id: map.length, name: md.a}]);
@@ -20,4 +20,4 @@ function unEffMapDrawing/*::<a>*/(md /*: MapDrawing<a>*/) {
   }
 }
 
-module.exports = runEffMapDrawing;
+module.exports = runEffGeoMap;
