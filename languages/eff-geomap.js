@@ -3,7 +3,7 @@
  */
 
 var R = require('ramda');
-var etaF = require('./ffree').etaF;
+var etaF = require('./../ffree').etaF;
 
 /*:: type GeoMap<a> = 
        { kind: "AddMarker", value: a} |

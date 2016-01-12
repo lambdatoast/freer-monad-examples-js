@@ -1,7 +1,8 @@
-var addMarker = require('../eff-geomap').addMarker; 
-var removeMarker = require('../eff-geomap').removeMarker; 
-var hasMarker = require('../eff-geomap').hasMarker; 
-var getMarkers = require('../eff-geomap').getMarkers; 
+var EGM = require('../languages/eff-geomap');
+var addMarker = EGM.addMarker; 
+var removeMarker = EGM.removeMarker; 
+var hasMarker = EGM.hasMarker; 
+var getMarkers = EGM.getMarkers; 
 
 // Verbose syntax. see fromList()-using version below:
 var p = addMarker('antarctica').chain(function () {
