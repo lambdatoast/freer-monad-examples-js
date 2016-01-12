@@ -11,11 +11,13 @@ function runEffGeoMap/*::<a>*/(emd /*: EffGeoMap<a> */) {
 }
 
 var markers = [];
+var lastId = 0;
 
 function unEffGeoMap/*::<a>*/(md /*: GeoMap<a>*/) {
   return function (r) {
     if (md.kind === 'AddMarker') {
-      var m = { id: markers.length, name: md.a};
+      var m = { id: lastId, name: md.a};
+      lastId++;
       markers.push(m);
       return m;
     } else if (md.kind === 'RemoveMarker') {
