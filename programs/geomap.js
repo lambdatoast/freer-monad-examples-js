@@ -24,13 +24,14 @@ function fromList(xs) {
 }
 
 module.exports = fromList([
-  addMarker('antarctica'),
+  addMarker('france'),
   addMarker('serbia'),
   addMarker('russia'),
-  removeMarker('antarctica'),
+  removeMarker('france'),
   hasMarker('serbia').chain(function (answer) {
     return !answer ? removeMarker('serbia') : fromList([
-      addMarker('belgium')
+      addMarker('belgium'),
+      addMarker('austria')
     ])
   }),
   getMarkers
